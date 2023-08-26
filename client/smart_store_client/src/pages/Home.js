@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { BiSearch } from 'react-icons/bi'
 import './../css/Home.css'
+import ProductCard from "../components/ProductCard";
 const Home = () => {
     const {searchText, setSearchText, productList, onSearch, onClickProduct} = useOutletContext();
     return (
@@ -14,6 +15,20 @@ const Home = () => {
                     <button> All </button>
                     <button> Shoes </button>
                     <button> Clothes </button>
+            </div>
+
+            <span className='separate'></span>
+
+            <div className="product-section-display">
+                <div className="grid-layout">
+                    {
+                        productList.map((item) => {
+                            return ( 
+                                <ProductCard item={item}/>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

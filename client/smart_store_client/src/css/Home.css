@@ -60,3 +60,10 @@
     margin-right: 8px;
     transition: 0.3s;
 }
+
+.grid-layout {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: auto;
+    grid-gap: 10px;
+}
