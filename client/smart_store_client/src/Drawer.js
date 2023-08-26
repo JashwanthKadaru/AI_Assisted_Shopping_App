@@ -12,9 +12,9 @@ const Drawer = () => {
                     </div>
 
                     <div className='brand-tag'>
-                        <h3> Fashion </h3>
-                        <h3> made </h3>
-                        <span> smarter </span>
+                        <h3> Fashion. </h3>
+                        <h3> made. </h3>
+                        <span> Smarter. </span>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@ const Drawer = () => {
                         <NavLink className='link' to={'/shop'}> Home </NavLink>
                         <NavLink className='link' to={'/shop'}> Home </NavLink>
                         <NavLink className='link' to={'/shop'}> Home </NavLink>
-                        <NavLink className='link' to={'/'}> Signout </NavLink>
+                        <NavLink className='link' to={'/'}> Sign Out </NavLink>
                     </nav>
                 </header>
             </div>
