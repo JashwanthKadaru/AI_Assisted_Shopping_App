@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Purchases from './pages/Purchases';
 import Cart from './pages/Cart'
+import Register from './pages/Register'
 const  router = createBrowserRouter(
   
   createRoutesFromElements(
@@ -15,7 +16,7 @@ const  router = createBrowserRouter(
       <Route path='/shop' element={<Home />}/>
       <Route path='/purchases' element={<Purchases />}/>
       <Route path='/cart' element={<Cart />}/>
-    
+      <Route path='/register' element={<Register />}/>
     </Route>
   )
 )
