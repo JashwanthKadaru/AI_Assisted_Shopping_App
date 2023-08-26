@@ -1,0 +1,22 @@
+.app-body {
+  width: 100%;
+  min-height: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.app-display-box {
+  width: 75%;
+  min-height: 100vh;
+  height: fit-content;
+  /* border: 1px solid black; */
+}
+
+.app-drawer-box {
+  width: 25%;
+  min-height: 100vh;
+  height: fit-content;
+  /* border: 1px solid black; */
+}
