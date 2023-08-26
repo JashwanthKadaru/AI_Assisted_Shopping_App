@@ -22,7 +22,9 @@
     border: 1px solid transparent;
 }
 
-
+.search-box input:hover, .search-box input:active {
+    border: 1px solid #aaaaaa;
+}
 
 .search-icon {
     display: inline-block;

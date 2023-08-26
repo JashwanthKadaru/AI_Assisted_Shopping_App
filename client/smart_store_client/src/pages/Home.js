@@ -10,6 +10,7 @@ const Home = () => {
             <div className="search-box">
                 <input type="search" placeholder="type search" value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
                 <BiSearch className="search-icon"/>
+                <FcAssistant className="search-icon"/>
             </div>
 
             <div className="tags-div">
