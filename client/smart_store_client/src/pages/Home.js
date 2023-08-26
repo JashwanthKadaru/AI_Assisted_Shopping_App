@@ -10,7 +10,11 @@ const Home = () => {
                 <BiSearch className="search-icon"/>
             </div>
 
-           
+            <div className="tags-div">
+                    <button> All </button>
+                    <button> Shoes </button>
+                    <button> Clothes </button>
+            </div>
         </div>
     )
 }
