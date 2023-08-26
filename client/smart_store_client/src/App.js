@@ -6,7 +6,10 @@ function App() {
 
   const [ searchText, setSearchText ] = useState('');
 
-  const productList = [{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ] 
+  const productList = [{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]
+  
+  const purchasesList = [{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]
+
   const onSearch = () => {
     return {}
   }
@@ -27,7 +30,7 @@ function App() {
         </div>
         {/* Outlet section to dynamically change content */}
         <div className='app-display-box'>
-          <Outlet context={{searchText, setSearchText, productList, onSearch, onClickProduct}}/>
+          <Outlet context={{searchText, setSearchText, productList, onSearch, onClickProduct, purchasesList}}/>
         </div>
     </div>
   )

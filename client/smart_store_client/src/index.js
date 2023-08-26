@@ -5,13 +5,16 @@ import App from './App';
 import {createBrowserRouter, RouterProvider, Route, createRoutesFromElements} from 'react-router-dom'
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Purchases from './pages/Purchases';
 
 const  router = createBrowserRouter(
   
   createRoutesFromElements(
-    <Route path='/' element={<App/>}>
-      <Route index element={<Login/>}/>
+    <Route path='/' element={<App />}>
+      <Route index element={<Login />}/>
       <Route path='/shop' element={<Home />}/>
+      <Route path='/purchases' element={<Purchases />}/>
+      <Route path='/cart' element={<Purchases />}/>
     
     </Route>
   )

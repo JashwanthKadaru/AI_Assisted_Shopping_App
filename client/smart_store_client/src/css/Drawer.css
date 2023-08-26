@@ -16,7 +16,7 @@
     padding: 5px;
 }
 
- .navbar {
+.navbar {
     height: 70vh;
     flex-direction: column;
     justify-content: space-between; 
@@ -160,12 +160,14 @@ nav {
     border-radius: 20px;
     margin: 1px 0px;
     font-size: 0.75rem;
+    transition: 0.3s;
 }
 
 .link:hover {
     color:#314692;
     z-index: 2;
     background-color: #9cb0f9;
+    transform: scale(1.05);
     transition: 0.3s;
 }
 
