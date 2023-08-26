@@ -20,3 +20,7 @@
   height: fit-content;
   /* border: 1px solid black; */
 }
+
+.overlay {
+  position: fixed;
+}

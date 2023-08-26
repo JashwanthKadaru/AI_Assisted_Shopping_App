@@ -1,7 +1,16 @@
+import { useOutletContext } from "react-router-dom";
+import { BiSearch } from 'react-icons/bi'
+import './../css/Home.css'
 const Home = () => {
+    const {searchText, setSearchText, productList, onSearch, onClickProduct} = useOutletContext();
     return (
         <div className="home">
-            <p> Home page. </p>
+            <div className="search-box">
+                <input type="search" placeholder="type search" value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+                <BiSearch className="search-icon"/>
+            </div>
+
+           
         </div>
     )
 }
