@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { BiSearch } from 'react-icons/bi'
+import { FcAssistant } from 'react-icons/fc' 
 import './../css/Home.css'
 import ProductCard from "../components/ProductCard";
 const Home = () => {
