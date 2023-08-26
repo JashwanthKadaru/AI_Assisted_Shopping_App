@@ -1,0 +1,91 @@
+.purchase-card {
+    width: 60%;
+    margin: 10px 0px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 1.5px 1.5px 10px 1px rgba(0,0,0,0.4);
+    padding: 10px 20px;
+}   
+
+.purchase-card h3 {
+    display:inline-block;
+    margin: 0px;
+    font-size: 1rem;
+    color: #555;
+    font-family: 'Poppins';
+}
+
+.purchase-card .id-div{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #888;
+}
+.purchase-card .order-id {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 0.90rem;
+    color: #555;
+    margin-bottom: -2px;
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+
+.purchase-card p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-family: 'Work Sans', Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 2px;
+}
+
+.purchase-card b {
+    display: inline-block;
+    width: 100px;
+}
+
+.purchase-list {
+    margin-top: 20px;
+    border: 1px solid #888;
+    border-radius: 3px;
+    background-color: whitesmoke;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: block;
+    overflow-x: hidden;
+}
+
+.purchase-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 5px 0px;
+    margin: 2px 0;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #666;
+    border-radius: 3px;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+.heading {
+    border: 1px solid #666;
+    background-color: rgb(116, 167, 255);
+    margin: 0;
+}
+
+.purchase-item span {
+    display:inline-block;
+    font-size: 0.75rem;
+    font-family: 'Poppins';
+    text-transform: capitalize;
+    margin: 0 5px;
+    flex: 1;
+}
