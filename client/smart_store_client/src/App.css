@@ -8,14 +8,14 @@
 }
 
 .app-display-box {
-  width: 75%;
+  width: 80%;
   min-height: 100vh;
   height: fit-content;
   /* border: 1px solid black; */
 }
 
 .app-drawer-box {
-  width: 25%;
+  width: 20%;
   min-height: 100vh;
   height: fit-content;
   /* border: 1px solid black; */

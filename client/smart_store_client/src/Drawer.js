@@ -19,7 +19,7 @@ const Drawer = () => {
                 </div>
 
                 <div className='user-div'>
-                    <div className='profile-pic'> <img src=''/> </div>
+                    <div className='profile-pic'> <img src='/myimage.jpg'/> </div>
                     <div className='user-details'>
                         <h4> Kadaru Jashwanth Reddy</h4>
                         <h6> #0001102FA137 </h6>
