@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap');
+
+.app-drawer {
+    min-height: 100vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    border: 1px solid #aaaaaa;
+
+    background-color: #829cfb;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    padding: 5px;
+}
+
+ .navbar {
+    height: 70vh;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.brand-div {
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    /*  */
+}
+
+.brand-name {
+    padding: 6px;
+    /* border: 1px solid black; */
+}
+
+.navbar h1 {
+    font-size: 1.4rem;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin : 0;
+}
+
+.navbar span {
+    color: white;
+    font-size: 1.4rem;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+.brand-tag {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    /* border: 1px solid black; */
+}
+
+.brand-tag h3 {
+    font-size: 0.85rem;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin : 2px 0;
+}
+
+.brand-tag span {
+    font-size: 0.85rem;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin : 2px 0;
+    color: white;
+}
+
+.user-div {
+    margin: 0 5px;
+    margin-top: 25px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    
+    padding-left: 10px;
+    border-bottom: 1px solid rgb(106, 106, 106);
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 5px 0;
+    
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 10px;
+}
+
+.user-details h4 {
+    margin: 2px;
+    font-size: 0.8rem;
+    font-family: 'Work Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    
+}
+
+.user-details h6 {
+    margin: 2px;
+    font-size: 0.7rem;
+    font-family: 'Work Sans', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    
+    padding: 5px;
+}
+
+header {
+    margin: 10px 10px;
+    padding-left: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    margin: 3.5px 0px;
+}
+
+footer {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: center;       
+}
+
+footer p {
+    padding-bottom: 35px;
+}
