@@ -1,6 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useOutletContext } from 'react-router-dom';
 import '../css/Drawer.css'
-const Drawer = () => {
+const Drawer = ({ isLogged ,setIsLogged, isVerfied, setIsVerified }) => {
+    const navigate = useNavigate();
+
+    const handleLogout = (event) => {
+       event.preventDefault();
+       
+       setIsLogged(false); setIsVerified(false);
+
+       navigate('/login');
+    }
+
     return (
         <div className="app-drawer">
             <div className='navbar'>
@@ -28,10 +38,11 @@ const Drawer = () => {
 
                 <header>
                     <nav>
-                        <NavLink className='link' to={'/shop'}> Home </NavLink>
-                        <NavLink className='link' to={'/purchases'}> Purchases </NavLink>
-                        <NavLink className='link' to={'/cart'}> Cart </NavLink>
-                        <NavLink className='link' to={'/login'}> Sign Out </NavLink>
+                        {(isLogged)?<NavLink className='link' to={'/shop'}> Home </NavLink>:null}
+                        {(isLogged)?<NavLink className='link' to={'/purchases'}> Purchases </NavLink>:null}
+                        {(isLogged)?<NavLink className='link' to={'/cart'}> Cart </NavLink>:null}
+                        {(isLogged)?<a className='link' onClick={(e)=>{handleLogout(e)}}> Sign Out </a>:null}
+                        {(!isLogged)?<NavLink className='link' to={'/login'}> Login </NavLink>:null}
                     </nav>
                 </header>
             </div>

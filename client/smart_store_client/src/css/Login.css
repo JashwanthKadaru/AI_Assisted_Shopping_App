@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #fbeeff;
 }
 
 form {
@@ -51,21 +52,22 @@ form button {
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
 
-    background-color: rgb(88, 136, 247);
+    background-color: #bf1bdf;
 }
 
 form button:hover {
     box-shadow: 1.5px 1.5px 15px 1px rgba(0,0,0,0.35);
     transform: scale(1.1);
+    color: white;
 }
 
 a {
     font-size: 0.75rem;
     font-family: 'Work Sans', Arial, Helvetica, sans-serif;
     margin: 15px 0;
-    color: rgb(2, 37, 118);
+    color: #a805c8;
 }
 
 a:hover {
-    color: rgb(58, 110, 231);
+    color: #bf1bdf;
 }
