@@ -31,7 +31,7 @@ const Drawer = () => {
                         <NavLink className='link' to={'/shop'}> Home </NavLink>
                         <NavLink className='link' to={'/purchases'}> Purchases </NavLink>
                         <NavLink className='link' to={'/cart'}> Cart </NavLink>
-                        <NavLink className='link' to={'/'}> Sign Out </NavLink>
+                        <NavLink className='link' to={'/login'}> Sign Out </NavLink>
                     </nav>
                 </header>
             </div>
