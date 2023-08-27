@@ -2,8 +2,9 @@ import './App.css';
 import Drawer from './components/Drawer';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import Hamburger from 'hamburger-react'
 function App() {
-
+  const [currrentProduct, setCurrentProduct] = useState({});
   const [globalUsername, setGlobalUsername] = useState('');
   const [ searchText, setSearchText ] = useState('');
   const [ assistText, setAssistText ] = useState('');
@@ -23,7 +24,7 @@ function App() {
   const onClickProduct = () => {
     return {}
   }
-
+  
   return (
     <div className='app-body'>
 
@@ -36,7 +37,11 @@ function App() {
         </div>
         {/* Outlet section to dynamically change content */}
         <div className='app-display-box'>
-          <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername}}/>
+
+          <div className='ham-div'>
+            <Hamburger size={20} color={'#a805c8'} className='ham'/>
+          </div>
+          <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currrentProduct, setCurrentProduct}}/>
         </div>
     </div>
   )

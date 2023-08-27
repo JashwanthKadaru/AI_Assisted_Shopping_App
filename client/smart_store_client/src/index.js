@@ -8,15 +8,17 @@ import Login from './pages/Login';
 import Purchases from './pages/Purchases';
 import Cart from './pages/Cart'
 import Register from './pages/Register'
+import Product from './pages/Product';
 const  router = createBrowserRouter(
   
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route path='login' element={<Login />}/>
+      <Route path='/login' element={<Login />}/>
       <Route path='/shop' element={<Home />}/>
       <Route path='/purchases' element={<Purchases />}/>
       <Route path='/cart' element={<Cart />}/>
       <Route path='/register' element={<Register />}/>
+      <Route path='/product' element={<Product />}/>
     </Route>
   )
 )
