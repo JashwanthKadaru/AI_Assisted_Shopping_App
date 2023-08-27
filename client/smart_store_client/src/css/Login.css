@@ -9,6 +9,7 @@
 }
 
 form {
+    display: block;
     width: 35%;
     height: 40vh;
     margin: 0 auto;
@@ -70,4 +71,45 @@ a {
 
 a:hover {
     color: #bf1bdf;
+}
+
+@media screen and (max-width: 1150px) {
+    
+    .login form {
+        width: 45%;
+        max-width: 450px;
+    }
+    .form-field {
+        width: 60%;
+    }
+    .form-field input {
+        margin-left: 10px;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .login form {
+        width: 55%;
+    }
+    .form-field {
+        width: 85%;
+    }
+    .form-field input {
+        margin-left: 10px;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .login form {
+        width: 65%;
+    }
+    .form-field {
+        width: 90%;
+    }
+    .form-field input {
+        margin-left: 10px;
+        width: 80%;
+    }
 }
