@@ -1,6 +1,7 @@
 .home {
     margin-top: 0px;
     background-color: #fbeeff;
+    overflow-x: hidden;
 }
 
 .search-box {

@@ -6,7 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const Home = () => {
-    const {searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, assistText, setAssistText, isLogged} = useOutletContext();
+    const {searchText, setSearchText, productList, setProductList, assistText, setAssistText, isLogged, globalUsername} = useOutletContext();
 
     const [ assistOn, setAssistOn ] = useState(false);
     const [ displayList, setDisplayList ] = useState([]);
@@ -26,6 +26,36 @@ const Home = () => {
         });
     }, [])
     
+    const onSearch = (mydisplayList=[], searchword) => {
+        let newDisplayList = mydisplayList.filter((item, index) => {
+            searchword = searchword.toLowercase()
+            if(item.name.toLowercase.includes(searchword)) return true;
+            else return false;
+        })
+
+        setDisplayList(newDisplayList);
+        return {}
+    }
+
+    const onAssistSearch = () => {
+        let newDisplayList = getGPTResponseForPrompt();
+        setDisplayList(newDisplayList);
+    }
+
+    const getGPTResponseForPrompt = () => {
+        axios.post('/smartfashionstore/GPTservice/', {password, globalUsername, productList, assistText})
+        .then(response => {
+            setDisplayList(response.data.productList);
+        })
+        .catch(error => {
+            console.error('Error fetching data' + error);
+        });
+    }
+
+
+    // TODO : implement filter buttons
+    
+
     return (
         <div className="home">
             <div className="search-box">

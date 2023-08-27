@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 
 const Cart = () => {
-    const {cartList, setCartList, isLogged, globalUsername} = useOutletContext();
+    const {cartList, setCartList, isLogged, globalUsername, setProductList, productList} = useOutletContext();
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -21,6 +21,7 @@ const Cart = () => {
         });
     }, []);
 
+    
     return (
         <div className='cart'>
             <h1> {(cartList)?"Items in your cart. Have a look before you proceed.":"There are currently no items in your cart. "} </h1>
@@ -32,7 +33,14 @@ const Cart = () => {
                         {
                             cartList.map((item,index) => {
                                 return ( 
-                                    <CartCard item={item} key={index}/>
+                                    <CartCard item={item} 
+                                        key={index} 
+                                        cartList={cartList} 
+                                        setCartList={setCartList}
+                                        productList={productList}
+                                        setProductList={setProductList} 
+                                        isLogged={isLogged} 
+                                        globalUsername={globalUsername}/>
                                 )
                             })
                         }

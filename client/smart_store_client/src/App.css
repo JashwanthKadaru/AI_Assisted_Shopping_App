@@ -22,7 +22,14 @@
   /* border: 1px solid black; */
 }
 
-.app-drawer-box {
+.app-drawer-box-under {
+  width: 20%;
+  min-height: 100vh;
+  height: fit-content;
+  /* border: 1px solid black; */
+}
+
+.app-drawer-box-over {
   width: 20%;
   min-height: 100vh;
   height: fit-content;
@@ -35,8 +42,19 @@
 
 @media screen and (max-width: 1150px){
 
-    .app-drawer-box {
-      display:none;
+    .app-drawer-box-under {
+      display: none;
+    }
+
+    .app-drawer-box-over {
+      width: 275px;
+      transition: 0.3s;
+    }
+
+    .hide {
+      position: absolute;
+      transform: translateX(-300px);
+      transition: 0.3s;
     }
 
     .app-display-box {

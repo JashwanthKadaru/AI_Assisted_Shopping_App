@@ -17,29 +17,27 @@ function App() {
 
   const [cartList, setCartList] = useState([{}, {}, {}, {}, {}, {}]);
 
-  const onSearch = () => {
-    return {}
-  }
-
-  const onClickProduct = () => {
-    return {}
-  }
+  const [showMenu, setShowMenu] = useState(false);
+  const [showHam, setShowHam] = useState(false);
   
   return (
     <div className='app-body'>
 
         {/* side drawer for menu and credits and app name     */}
-        <div className='app-drawer-box overlay'>
-          <Drawer isLogged={isLogged} setIsLogged={setIsLogged} isVerfied={isVerified} setIsVerified={setIsVerified}/>
+        <div className={ (!showMenu)?'app-drawer-box-over overlay hide':'app-drawer-box-over overlay'}>
+          <Drawer isLogged={isLogged} setIsLogged={setIsLogged} isVerfied={isVerified} setIsVerified={setIsVerified} showMenu={showMenu} setShowMenu={setShowMenu}/>
         </div>
 
-        <div className='app-drawer-box'>
+        <div className='app-drawer-box-under'>
         </div>
         {/* Outlet section to dynamically change content */}
         <div className='app-display-box'>
 
           <div className='ham-div'>
-            <Hamburger size={20} color={'#a805c8'} className='ham'/>
+            <Hamburger size={20} color={'#a805c8'} className='ham' toggled={showHam} toggle={setShowHam} onToggle={(toggled) => {
+              if(toggled){setShowMenu(true);}
+              else {setShowMenu(false)}  
+            }}/>
           </div>
           <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currrentProduct, setCurrentProduct}}/>
         </div>

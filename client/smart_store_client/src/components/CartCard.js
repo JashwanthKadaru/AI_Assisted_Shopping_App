@@ -1,8 +1,75 @@
 import '../css/CartCard.css'
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa' 
 import { useState } from 'react';
-const CartCard = () => {
+const CartCard = ({item, setCartList, isLogged, globalUsername, productList, setProductList}) => {
     const [number, setNumber] = useState(0);
+
+    const addProductToCart = () => {
+        currentItem = item;
+        axios.post('/smartfashionstore/addToCart', {globalUsername, cartList, item, qty})
+        .then(response => {
+            if(response.data.success){
+                setNumber(number+1);
+                
+                let newCartList = cartList.map((item) => {
+                    if(item.id !== currentItem.id) return item;
+                    else {
+                        item.qty-=1;
+                        return item;
+                    }
+                })
+                let newProductList = productList.map((item) => {
+                    if(item.id !== currentItem.id) return item;
+                    else {
+                        item.qty-=1;
+                        return item;
+                    }
+                })
+
+                setCartList(newCartList);
+                setProductList(newProductList);
+
+            }else if(response.data.alreadyExist) {
+                setIsRegister('true');
+            }
+        }).catch(error => {
+                console.error('In product page ', error);
+        })
+
+        const removeProductFromCart = () => {
+            if(number<=0) return;
+            axios.post('/smartfashionstore/removeFromCart', {globalUsername, cartList, currentProduct, qty})
+            .then(response => {
+                if(response.data.success){
+                    setNumber(number-1);
+                    
+                    let newCartList = cartList.map((item) => {
+                        if(item.id !== currentProduct.id) return item;
+                        else {
+                            item.qty+=1;
+                            return item;
+                        }
+                    })
+                    let newProductList = productList.map((item) => {
+                        if(item.id !== currentProduct.id) return item;
+                        else {
+                            item.qty+=1;
+                            return item;
+                        }
+                    })
+
+                    setCartList(newCartList);
+                    setProductList(newProductList);
+                    
+                }else if(response.data.alreadyExist) {
+                    setIsRegister('true');
+                }
+            }).catch(error => {
+                console.error('In product page ', error);
+            })
+        }
+    }
+
     return (
         <div className='cart-card'>
             <div className="cart-card-head"> 

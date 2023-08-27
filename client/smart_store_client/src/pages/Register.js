@@ -11,8 +11,24 @@ const Register = () => {
     const [newRegister, setNewRegister] = useState('');
 
     const onSubmit = () => {
+        setIsRegister('');
+        setNewRegister('');
 
+        axios.post('/smartfashionstore/register/', {username, email, password, picture, fullName})
+        .then(response => {
+            if(response.data.success){
+                setNewRegister('true')
+            }else if(response.data.alreadyExist) {
+                setIsRegister('true');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data' + error);
+        });
+
+        setFullName(''); setUsername(''); setEmail(''); setPassword(''); setPicture('');
     }
+
     return (
         <div className="register">
             <form >
@@ -43,6 +59,9 @@ const Register = () => {
                 </div>
 
                 <button type="submit" onClick={onSubmit()}> Submit </button>
+
+                {isRegister && <p style={{color: "red", width: "fit-content", maxWidth: "75%", margin: "0px auto", fontFamily: "Poppins", fontSize:"0.75rem"}}> This user has already registered.</p>}
+                {newRegister && <p style={{color: "green", width: "fit-content", maxWidth: "75%", margin: "0px auto", fontFamily: "Poppins", fontSize:"0.75rem"}}> The user has been registered.</p>}
             </form>
 
             <NavLink to='/login'> Already registered? Redirect to Login Page.</NavLink>
