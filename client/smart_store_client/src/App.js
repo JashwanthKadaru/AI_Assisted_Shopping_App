@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 function App() {
 
+  const [globalUsername, setGlobalUsername] = useState('');
   const [ searchText, setSearchText ] = useState('');
   const [ assistText, setAssistText ] = useState('');
   const [ isLogged, setIsLogged ] = useState('');
@@ -28,14 +29,14 @@ function App() {
 
         {/* side drawer for menu and credits and app name     */}
         <div className='app-drawer-box overlay'>
-          <Drawer />
+          <Drawer isLogged={isLogged} setIsLogged={setIsLogged} isVerfied={isVerified} setIsVerified={setIsVerified}/>
         </div>
 
         <div className='app-drawer-box'>
         </div>
         {/* Outlet section to dynamically change content */}
         <div className='app-display-box'>
-          <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText}}/>
+          <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername}}/>
         </div>
     </div>
   )

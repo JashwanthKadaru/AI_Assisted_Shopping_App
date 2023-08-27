@@ -1,15 +1,30 @@
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { BiSearch } from 'react-icons/bi'
 import { FcAssistant } from 'react-icons/fc' 
 import './../css/Home.css'
 import ProductCard from "../components/ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Home = () => {
-    const {searchText, setSearchText, productList, onSearch, onClickProduct, assistText, setAssistText} = useOutletContext();
+    const {searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, assistText, setAssistText, isLogged} = useOutletContext();
 
     const [ assistOn, setAssistOn ] = useState(false);
-
     const [ displayList, setDisplayList ] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!isLogged) {
+            navigate('/login');
+        }
+
+        axios.get('/smartfashionstore/products')
+        .then(response => {
+            setProductList(response.data.productList);
+        })
+        .catch(error => {
+            console.error('Error fetching data' + error);
+        });
+    }, [])
     
     return (
         <div className="home">
@@ -31,15 +46,18 @@ const Home = () => {
             <span className='separate'></span>
 
             <div className="product-section-display">
-                <div className="grid-layout">
-                    {
-                        productList.map((item, index) => {
-                            return ( 
-                                <ProductCard item={item} key={index}/>
-                            )
-                        })
-                    }
-                </div>
+                {
+                    (productList)?
+                    <div className="grid-layout">
+                        {
+                            productList.map((item, index) => {
+                                return ( 
+                                    <ProductCard item={item} key={index}/>
+                                )
+                            })
+                        }
+                    </div>:<p style={{fontFamily: 'Poppins', color:'#e89cf8de', width: "fit-content", margin: "15px auto", fontSize:'1rem'}}> No products in store, to display.</p>
+                }
             </div>
         </div>
     )
