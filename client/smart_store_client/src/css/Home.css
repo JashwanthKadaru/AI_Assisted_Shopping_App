@@ -1,5 +1,6 @@
 .home {
-    margin-top: 35px;
+    margin-top: 0px;
+    background-color: #fdf6ff;
 }
 
 .search-box {
@@ -7,9 +8,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 35px auto;
-    width: 65%;
+    margin: 0px auto;
+    padding: 35px;
+    width: 100%;
+    background:  linear-gradient(330deg,  #a805c8 57%,  #efadfcde);;
     /* border: 1px solid black; */
+    z-index: 10;
 }
 
 .search-box input {
@@ -56,17 +60,18 @@
     max-width: 68px;
     padding: 3px 5px;
     border-radius: 15px;
-    background-color: #5c79e2;
+    background-color: #a805c8;
     color: white;
     border: none;
-    margin: 6px 4px;
+    margin: 20px 4px;
+    margin-top: 35px;
     transition: 0.3s;
 }
 
 .tags-div button:hover {
     box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.5);
-    margin-top: 2px;
-    margin-bottom: 10px;
+    margin-top: 28px;
+    margin-bottom: 27px;
     margin-left: 0px;
     margin-right: 8px;
     transition: 0.3s;

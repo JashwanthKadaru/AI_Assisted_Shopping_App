@@ -11,9 +11,10 @@
     justify-content: space-between; */
     border: 1px solid #aaaaaa;
 
-    background-color: #829cfb;
+    background: linear-gradient(320deg,  #a805c8 57%,  #efadfcde);
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     padding: 5px;
+    z-index: 1;
 }
 
 .navbar {
@@ -164,9 +165,9 @@ nav {
 }
 
 .link:hover {
-    color:#314692;
+    color: #a805c8;
     z-index: 2;
-    background-color: #9cb0f9;
+    background-color: #f7d1ffde;
     transform: scale(1.05);
     transition: 0.3s;
 }
