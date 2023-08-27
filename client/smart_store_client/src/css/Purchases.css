@@ -5,6 +5,8 @@
     align-items: flex-start;
     padding: 0;
     background-color: #fbeeff;
+    overflow: hidden;
+    /* overflow:hidden; */
 }
 
 .purchases-display {
@@ -17,10 +19,11 @@
 }
 
 .purchases h1{
-    width: 92%;
+    width: 89%;
     margin: 0;
+    text-align: center;
     margin-bottom: 25px;
-    padding: 27px 0px;
+    padding: 27px 30px;
     padding-left: 5rem;
     border: 1px solid black;
     color: rgba(255, 255, 255, 0.95);
@@ -28,4 +31,173 @@
     font-family: 'Work Sans';
     background: linear-gradient(330deg,  #a805c8 57%,  #e89cf8de);
     
+}
+
+
+@media screen and (max-width: 1150px){
+   .purchases{
+        overflow: hidden;
+        /* overflow:hidden; */
+    }
+    .purchases h1{
+        width: 93%;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 25px;
+        padding: 27px 30px;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 4rem;
+        border: 1px solid black;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 600;
+        font-family: 'Work Sans';
+        font-size: 1.8rem;
+        background: linear-gradient(330deg,  #a805c8 57%,  #e89cf8de);    
+    } 
+
+    .purchases-display {
+        width: 100%;
+        padding: 2%; 
+        display:grid;
+        grid-template-columns: repeat(3, 325px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1070px){
+    .purchases-display {
+        width: 100%;
+        padding: 5%; 
+        display:grid;
+        grid-template-columns: repeat(2, 460px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1020px){
+    .purchases-display {
+        width: 100%;
+        padding: 5%; 
+        display:grid;
+        grid-template-columns: repeat(2, 450px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .purchases-display {
+        width: 100%;
+        padding: 4%;
+        display:grid;
+        grid-template-columns: repeat(2, 430px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .purchases-display {
+        width: 100%;
+        padding: 4%;
+        display:grid;
+        grid-template-columns: repeat(2, 410px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 920px){
+    .purchases-display {
+        width: 100%;
+        padding: 4%;
+        display:grid;
+        grid-template-columns: repeat(2, 380px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 870px){
+    .purchases-display {
+        width: 100%;
+        padding: 4%;
+        display:grid;
+        grid-template-columns: repeat(2, 360px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 830px){
+    .purchases-display {
+        width: 100%;
+        padding: 4%;
+        display:grid;
+        grid-template-columns: repeat(2, 340px);
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 780px){
+    .purchases-display {
+        width: 80%;
+        margin: 0 auto;
+        padding: 5%;
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .purchases{
+        overflow: hidden;
+        /* overflow:hidden; */
+    }
+    .purchases h1{
+        width: 86%;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 25px;
+        padding: 27px 30px;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 4rem;
+        border: 1px solid black;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 600;
+        font-family: 'Work Sans';
+        font-size: 1.8rem;
+        background: linear-gradient(330deg,  #a805c8 57%,  #e89cf8de);    
+    } 
+}
+
+
+@media screen and (max-width: 570px) {
+    .purchases{
+        overflow: hidden;
+        /* overflow:hidden; */
+    }
+    .purchases h1{
+        width: 84%;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 25px;
+        padding: 27px 30px;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 4rem;
+        border: 1px solid black;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 600;
+        font-family: 'Work Sans';
+        font-size: 1.6rem;
+        background: linear-gradient(330deg,  #a805c8 57%,  #e89cf8de);    
+    } 
 }

@@ -32,7 +32,7 @@ const Purchases = () => {
             <h1> Your Past Purchases On Smart Store</h1>
             
             <div className='purchases-display'>
-                {(purchasesList && false)?purchasesList.map((item, index) => {
+                {(purchasesList)?purchasesList.map((item, index) => {
                     return (
                         <PurchaseCard listItem={listItem} key=  {index}/>
                     )
