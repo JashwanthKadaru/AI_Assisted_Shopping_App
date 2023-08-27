@@ -1,3 +1,11 @@
+.ham-div {
+  display: none;
+}
+
+.ham {
+  display: none;
+}
+
 .app-body {
   width: 100%;
   min-height: 100%;
@@ -23,4 +31,25 @@
 
 .overlay {
   position: fixed;
+}
+
+@media screen and (max-width: 1150px){
+
+    .app-drawer-box {
+      display:none;
+    }
+
+    .app-display-box {
+      width: 100%;
+    }
+
+    .ham-div {
+      display: block;
+      position: fixed;
+    }
+
+    .ham {
+      display: inline-block;
+    }
+    
 }
