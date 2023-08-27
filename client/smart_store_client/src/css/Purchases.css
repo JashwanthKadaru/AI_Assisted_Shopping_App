@@ -1,14 +1,31 @@
 .purchases{
-    width: 100%;
     min-height: 100vh;
     display:flex;
     flex-direction: column;
     align-items: flex-start;
-
-    padding-left: 10%;
+    padding: 0;
+    background-color: #fbeeff;
 }
 
-h1{
-    width: fit-content;
-    margin-left: -15px;
+.purchases-display {
+    width: 80%;
+    padding-left: 10%; 
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;  
+}
+
+.purchases h1{
+    width: 92%;
+    margin: 0;
+    margin-bottom: 25px;
+    padding: 27px 0px;
+    padding-left: 5rem;
+    border: 1px solid black;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    font-family: 'Work Sans';
+    background: linear-gradient(330deg,  #a805c8 57%,  #e89cf8de);
+    
 }
