@@ -1,7 +1,8 @@
 import { useState } from "react";
 import '../css/Login.css'
-import { NavLink } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 const Login = () => {
+    const { isLogged ,setIsLogegd, isVerfied, setIsVerified } = useOutletContext();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 

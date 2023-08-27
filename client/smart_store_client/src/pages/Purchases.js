@@ -3,18 +3,20 @@ import '../css/Purchases.css'
 import PurchaseCard from '../components/PurchaseCard';
 
 const Purchases = () => {
-    const {purchasesList} = useOutletContext();
+    const {purchasesList, setPurchasesList} = useOutletContext();
 
     const listItem = {
         name: '',
         goods:[{},{},{},{},{},{}],
     };
+
     return (
         <div className='purchases'>
             <h1> Your Past Purchases On Smart Store</h1>
-            {purchasesList.map(() => {
+            
+            {purchasesList.map((item, index) => {
                 return (
-                    <PurchaseCard listItem={listItem}/>
+                    <PurchaseCard listItem={listItem} key={index}/>
                 )
             })}
         </div>

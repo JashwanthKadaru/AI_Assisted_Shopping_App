@@ -48,7 +48,7 @@ const PurchaseCard = ({listItem}) => {
                 {
                     listItem.goods.map((item, index) => {
                         return(
-                            <div className="purchase-item">
+                            <div className="purchase-item" key={index}>
                                 <span className="purchase-index"> {index} </span>                        
                                 <span className="purchase-name" style={{flex: "5"}}> Bata Black Leather Shoes </span>
                                 <span className="purchase-qty"> (1) </span>

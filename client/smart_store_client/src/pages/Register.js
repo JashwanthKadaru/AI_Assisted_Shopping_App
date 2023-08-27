@@ -7,6 +7,8 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [picture, setPicture] = useState('');
+    const [isRegister, setIsRegister] = useState('');
+    const [newRegister, setNewRegister] = useState('');
 
     const onSubmit = () => {
 

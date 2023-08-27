@@ -5,12 +5,16 @@ import { useState } from 'react';
 function App() {
 
   const [ searchText, setSearchText ] = useState('');
+  const [ assistText, setAssistText ] = useState('');
+  const [ isLogged, setIsLogged ] = useState('');
+  const [ isVerified, setIsVerified] = useState('')
 
-  const productList = [{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]
+  const [productList, setProductList] = useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
   
-  const purchasesList = [{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]
+  const [purchasesList, setPurchasesList] = useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
 
-  const cartList = [{}, {}, {}, {}, {}, {}]
+  const [cartList, setCartList] = useState([{}, {}, {}, {}, {}, {}]);
+
   const onSearch = () => {
     return {}
   }
@@ -31,7 +35,7 @@ function App() {
         </div>
         {/* Outlet section to dynamically change content */}
         <div className='app-display-box'>
-          <Outlet context={{searchText, setSearchText, productList, onSearch, onClickProduct, purchasesList, cartList}}/>
+          <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText}}/>
         </div>
     </div>
   )
