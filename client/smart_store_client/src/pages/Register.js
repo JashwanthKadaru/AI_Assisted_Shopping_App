@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import '../css/Register.css'
+import '../css/Register.css';
+import axios from 'axios';
+
 const Register = () => {
     const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState('');

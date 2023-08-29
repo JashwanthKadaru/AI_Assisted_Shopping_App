@@ -1,5 +1,6 @@
 import './../css/ProductCard.css'
 import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useState } from 'react';
 const ProductCard = ({item}) => {
     const {currentProduct, setCurrentProduct} = useOutletContext();
     const navigate = useNavigate();
@@ -7,7 +8,9 @@ const ProductCard = ({item}) => {
         setCurrentProduct(item)
         navigate('/product')
     }
+
     return (
+
         <div className="product-card" onClick={(e) => {navigateToProduct(e)}}>
            <div className="product-card-head"> 
                 <div className="product-image">
@@ -16,9 +19,9 @@ const ProductCard = ({item}) => {
             </div>
 
             <div className="product-card-body">
-                <h6> Product Name</h6>
-                <p className="price-info"> Price : {6.66 + ' $'}</p>
-                <p className="stock-info"> available </p>
+                <h6> {item.productName} </h6>
+                <p className="price-info"> {'Price : ' + item.productPrice + ' $'}</p>
+                <p className="stock-info"> {(item.productPrice > 0)?"available":"Not Available"} </p>
             </div>
         </div>
     )

@@ -2,8 +2,11 @@ import './App.css';
 import Drawer from './components/Drawer';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import Hamburger from 'hamburger-react'
+import Hamburger from 'hamburger-react';
+
+
 function App() {
+
   const [currrentProduct, setCurrentProduct] = useState({});
   const [globalUsername, setGlobalUsername] = useState('');
   const [ searchText, setSearchText ] = useState('');
@@ -11,11 +14,11 @@ function App() {
   const [ isLogged, setIsLogged ] = useState('');
   const [ isVerified, setIsVerified] = useState('')
 
-  const [productList, setProductList] = useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
+  const [productList, setProductList] = useState([]);//useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
   
-  const [purchasesList, setPurchasesList] = useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
+  const [purchasesList, setPurchasesList] = useState([]);//useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
 
-  const [cartList, setCartList] = useState([{}, {}, {}, {}, {}, {}]);
+  const [cartList, setCartList] = useState([]);//useState([{}, {}, {}, {}, {}, {}]);
 
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
@@ -39,7 +42,7 @@ function App() {
               else {setShowMenu(false)}  
             }}/>
           </div>
-          <Outlet context={{searchText, setSearchText, productList, setProductList, onSearch, onClickProduct, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currrentProduct, setCurrentProduct}}/>
+          <Outlet context={{searchText, setSearchText, productList, setProductList, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currrentProduct, setCurrentProduct}}/>
         </div>
     </div>
   )

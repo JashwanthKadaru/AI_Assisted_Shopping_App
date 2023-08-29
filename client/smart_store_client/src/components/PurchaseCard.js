@@ -26,16 +26,16 @@ const PurchaseCard = ({listItem}) => {
 
         return (`${_date} ${month} ${year},  ${hours}:${minutes}:${seconds} ${time}`)
     }
-
-
+    const purchaseItems = JSON.parse(listItem.purchaseItems);
+    const purchaseDate = new Date(listItem.purchaseDateTime)
     return (
         <div className="purchase-card">
             <span className='id-div'>
-            <h3 className="purchase-id"> Order ID: </h3> <span className='order-id'>#0001102FA137</span> 
+            <h3 className="purchase-id"> Order ID: </h3> <span className='order-id'>{listItem.purchaseID}</span> 
             </span>
-            <p className="purchase-orderby"> <b>Ordered by:</b> Kadaru Jashwanth Reddy </p>
-            <p className="purchase-date"> <b>Ordered on:</b> {currentDateToString(new Date())} </p>
-            <p className="purchase-total"> <b>Total bill:</b> 243.99$ </p>
+            <p className="purchase-orderby"> <b>Ordered by:</b> {listItem.purchaseName} </p>
+            <p className="purchase-date"> <b>Ordered on:</b> {currentDateToString(purchaseDate)} </p>
+            <p className="purchase-total"> <b>Total bill:</b> {listItem.purchaseTotal} </p>
 
             <div className="purchase-list">
 
@@ -46,16 +46,16 @@ const PurchaseCard = ({listItem}) => {
                     <span className="purchase-price"> cost </span>
                 </div>
                 {
-                    listItem.goods.map((item, index) => {
+                    (purchaseItems && purchaseItems.length> 0)?purchaseItems.map((item, index) => {
                         return(
                             <div className="purchase-item" key={index+1}>
                                 <span className="purchase-index"> {index+1} </span>                        
-                                <span className="purchase-name" style={{flex: "5"}}> Bata Black Leather Shoes </span>
-                                <span className="purchase-qty"> (1) </span>
-                                <span className="purchase-price"> 49.99$ </span>
+                                <span className="purchase-name" style={{flex: "5"}}> {item.productName} </span>
+                                <span className="purchase-qty"> {item.productQty} </span>
+                                <span className="purchase-price"> {item.totalCost} </span>
                             </div>
                         )
-                    })
+                    }):null
                 }
             </div>
         </div>
