@@ -6,135 +6,75 @@ import axios from 'axios'
 const CartCard = ({item, cartList, setCartList, isLogged, globalUsername, productList, setProductList}) => {
 
     // state to set and update the quantity of cart item on UI.
-    const [number, setNumber] = useState(0);
+    const [number, setNumber] = useState(item.cartQty);
     const [tooLess, setTooLess] = useState('');
     const [tooMany, setTooMany] = useState('');
+    const [buymessage, setBuyMessage] = useState('');
+    
     // Logic for adding product to cart
-
     const removeCartCard = () => {
         let tempList = cartList;
-        let newCartList = tempList.filter((cartitem) => {
-            if(cartitem.ID === item.ID) return false;
-            return true;
-        })
-        
-        setCartList(newCartList);
+        // let newCartList = tempList.filter((cartitem) => {
+        //     if(cartitem.productID === item.productID) return false;
+        //     return true;
+        // })
+
+        const removeCard = async () => {
+            try{
+                let response = await axios.patch(`http://localhost:5123/smartfashionstore/cart/user/${globalUsername}/update`, {op: 'remove', itemID:item.productID, qty: 1});
+                
+                console.log(response);
+                if(response.data.success) {
+                    console.log("removed product from cart.");
+                    setCartList(response.data.new_cart);
+                } else {
+                    setBuyMessage(response.data.error);
+                }
+            } catch(error) {
+                console.error("Something went wrong.", error);
+                setBuyMessage("Error adding to cart. Try again");
+            }
+        }
+
+        removeCard();
     }
 
     const addProductToCart = async () => {
-        try {
-            let currentItem = item;
-
-            let newCartList = cartList.map((cartitem) => {
-                if (cartitem.ID === currentItem.ID) {
-                    let tempList = productList;
-
-                    for (let prod of tempList) {
-                        if (prod.productID === currentItem.ID) {
-                            if (prod.productQty > 0) {
-                                break;
-                            } else {
-                                return tooMany("Out of stock.");
-                            }
-                        }
-                    }
-
-                    setProductList(tempList);
-                    let newitem = { ...cartitem };
-                    newitem.qty = number + 1;
-                    return newitem;
-                }
-
-                return {...cartitem};
-            });
-
-            let response = await axios.patch('http://localhost:5123/smartfashionstore/cart/user', {
-                globalUsername,
-                newCartList,
-            });
-            if (response.data.success) {
-                setNumber(number + 1);
-                let newCartList = response.data.newCart;
-
-                let newProductList = productList.map((item) => {
-                    if (item.productID !== currentItem.ID) return {...item};
-                    else {
-                        let newitem = { ...item };
-                        newitem.productQty -= 1;
-                        return newitem;
-                    }
-                });
-
-                let response2 = await axios.patch('http://localhost:5123/smartfashionstore/products/push', {
-                    newProductList,
-                });
-                if (response2.data.success) {
-                    console.log('Successfully updated cart.');
-                    setCartList(newCartList);
-                    setProductList(newProductList);
-                } else {
-                    throw new Error('Failed to update cart. CartCard.js');
-                }
+        try{
+            let response = await axios.patch(`http://localhost:5123/smartfashionstore/cart/user/${globalUsername}/update`, {op: 'add', itemID:item.productID, qty: 1});
+            
+            if(response.data.success) {
+                setCartList(response.data.new_cart);
+                setNumber(number+1);
             } else {
-                throw new Error('Failed to update cart. CartCard.js');
+                setBuyMessage(response.data.error);
             }
-        } catch (error) {
-            console.error(error);
+        } catch(error) {
+            console.error("Something went wrong.", error);
+            setBuyMessage("Error adding to cart. Try again");
         }
-    };
+    }
 
-    const removeProductFromCart = async () => {
-        try {
-            let currentItem = item;
-
-            let tempCartList = cartList.map((cartitem) => {
-                if (cartitem.ID === currentItem.ID) {
-                    let newitem = { ...cartitem };
-                    newitem.qty = number - 1;
-                    return newitem;
-                }
-
-                return {...cartitem};
-            });
-
-            let newCartList = tempCartList.filter((item) => {
-                return item.qty > 0;
-            });
-
-            let response = await axios.patch('http://localhost:5123/smartfashionstore/cart/user', {
-                globalUsername,
-                newCartList,
-            });
-            if (response.data.success) {
-                setNumber(number - 1);
-                let newCartList = response.data.newCart;
-
-                let newProductList = productList.map((item) => {
-                    if (item.productID !== currentItem.ID) return {...item};
-                    else {
-                        let newitem = { ...item };
-                        newitem.productQty += 1;
-                        return newitem;
-                    }
-                });
-
-                let response2 = await axios.patch('http://localhost:5123/smartfashionstore/products/push', {
-                    newProductList,
-                });
-                if (response2.data.success) {
-                    console.log('Successfully updated cart.');
-                    setCartList(newCartList);
-                    setProductList(newProductList);
-                } else {
-                    throw new Error('Failed to update cart. CartCard.js');
-                }
+    const removeProductFromCart = async () => { 
+        try{
+            let response;
+            if(number>1) {
+                response = await axios.patch(`http://localhost:5123/smartfashionstore/cart/user/${globalUsername}/update`, {op: 'reduce', itemID:item.productID, qty: 1});
             } else {
-                throw new Error('Failed to update cart. CartCard.js');
+                response = await axios.patch(`http://localhost:5123/smartfashionstore/cart/user/${globalUsername}/update`, {op: 'remove', itemID:item.productID, qty: 1});
             }
-        } catch (error) {
-            console.error(error);
+
+            if(response.data.success) {
+                setCartList(response.data.new_cart);
+                setNumber(number-1);
+            } else {
+                setBuyMessage(response.data.error);
+            }
+        } catch(error) {
+            console.error("Something went wrong.", error);
+            setBuyMessage("Error removing from cart. Try again");
         }
-    };
+    }
 
     return (
         <div className='cart-card'>

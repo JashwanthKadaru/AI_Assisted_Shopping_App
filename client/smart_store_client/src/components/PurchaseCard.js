@@ -26,8 +26,10 @@ const PurchaseCard = ({listItem}) => {
 
         return (`${_date} ${month} ${year},  ${hours}:${minutes}:${seconds} ${time}`)
     }
-    const purchaseItems = JSON.parse(listItem.purchaseItems);
-    const purchaseDate = new Date(listItem.purchaseDateTime)
+    
+    // const purchaseItems = JSON.parse(listItem.purchaseItems);
+    const purchaseDate = new Date(listItem.purchaseDateTime);
+
     return (
         <div className="purchase-card">
             <span className='id-div'>
@@ -35,7 +37,7 @@ const PurchaseCard = ({listItem}) => {
             </span>
             <p className="purchase-orderby"> <b>Ordered by:</b> {listItem.purchaseName} </p>
             <p className="purchase-date"> <b>Ordered on:</b> {currentDateToString(purchaseDate)} </p>
-            <p className="purchase-total"> <b>Total bill:</b> {listItem.purchaseTotal} </p>
+            <p className="purchase-total"> <b>Total bill:</b> {listItem.purchaseTotal + " $"} </p>
 
             <div className="purchase-list">
 
@@ -46,13 +48,13 @@ const PurchaseCard = ({listItem}) => {
                     <span className="purchase-price"> cost </span>
                 </div>
                 {
-                    (purchaseItems && purchaseItems.length> 0)?purchaseItems.map((item, index) => {
+                    (listItem.purchaseItems && listItem.purchaseItems.length> 0)?listItem.purchaseItems.map((item, index) => {
                         return(
                             <div className="purchase-item" key={index+1}>
                                 <span className="purchase-index"> {index+1} </span>                        
                                 <span className="purchase-name" style={{flex: "5"}}> {item.productName} </span>
-                                <span className="purchase-qty"> {item.productQty} </span>
-                                <span className="purchase-price"> {item.totalCost} </span>
+                                <span className="purchase-qty"> {item.userPurchaseQty} </span>
+                                <span className="purchase-price"> {item.productTotalPrice} </span>
                             </div>
                         )
                     }):null
