@@ -19,7 +19,7 @@ const Purchases = () => {
 
         async function fetchPurchases() {
             try{
-                const response = await axios.post('http://localhost:5123/smartfashionstore/purchases/get', {globalUsername});
+                const response = await axios.get(`http://localhost:5123/smartfashionstore/purchases/user/${globalUsername}`);
                 const responseData = response.data;
 
                 if (responseData.success) {

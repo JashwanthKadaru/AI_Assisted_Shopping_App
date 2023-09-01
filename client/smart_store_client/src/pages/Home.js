@@ -9,8 +9,9 @@ import axios from "axios";
 const Home = () => {
     
     // getting state props from App router context. Props passed to Outlet in App.js can be imported here.
-    const {searchText, setSearchText, productList, setProductList, assistText, setAssistText, isLogged, globalUsername} = useOutletContext();
+    const {searchText, setSearchText, productList, setProductList, assistText, setAssistText, isLogged, globalUsername, currentProduct, setCurrentProduct} = useOutletContext();
 
+    console.log("Current Product: ", currentProduct, " ", setCurrentProduct);
 
     // Additional states that define state of the homepage.
 
@@ -121,7 +122,8 @@ const Home = () => {
         console.log(displayList);
     }    
 
-
+    console.log("Display List", displayList);
+    console.log("Global Username", globalUsername);
     return (
         <div className="home">
             <div className="search-box">
@@ -143,12 +145,13 @@ const Home = () => {
 
             <div className="product-section-display">
                 {
-                    (displayList)?
+                    (displayList ?? console.log(displayList))?
                     <div className="grid-layout">
                         {
                             displayList.map((item, index) => {
+                                console.log("index: ", index, ", item: ", item);
                                 return ( 
-                                    <ProductCard item={item} key={index}/>
+                                    <ProductCard item={item} key={index} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
                                 )
                             })
                         }

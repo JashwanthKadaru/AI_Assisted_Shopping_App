@@ -16,11 +16,11 @@ const Register = () => {
         setIsRegister('');
         setNewRegister('');
 
-        axios.post('/smartfashionstore/register/', {username, email, password, picture, fullName})
+        axios.post('http://localhost:5123/smartfashionstore/register/', {username:username, email:email, password:password, picture:picture, fullname:fullName})
         .then(response => {
             if(response.data.success){
                 setNewRegister('true')
-            }else if(response.data.alreadyExist) {
+            }else if(response.data.alreadyExists) {
                 setIsRegister('true');
             }
         })
@@ -60,7 +60,7 @@ const Register = () => {
                     <input type="file" max={1} value={picture} onChange={(e) => {setPicture(e.target.value); console.log(e.target.value)}}/>
                 </div>
 
-                <button type="submit" onClick={onSubmit()}> Submit </button>
+                <button type="submit" onClick={(e) => {onSubmit();}}> Submit </button>
 
                 {isRegister && <p style={{color: "red", width: "fit-content", maxWidth: "75%", margin: "0px auto", fontFamily: "Poppins", fontSize:"0.75rem"}}> This user has already registered.</p>}
                 {newRegister && <p style={{color: "green", width: "fit-content", maxWidth: "75%", margin: "0px auto", fontFamily: "Poppins", fontSize:"0.75rem"}}> The user has been registered.</p>}

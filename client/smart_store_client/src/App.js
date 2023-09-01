@@ -6,22 +6,18 @@ import Hamburger from 'hamburger-react';
 
 
 function App() {
-
-  const [currrentProduct, setCurrentProduct] = useState({});
-  const [globalUsername, setGlobalUsername] = useState('');
+  const [currentProduct, setCurrentProduct] = useState('');
   const [ searchText, setSearchText ] = useState('');
   const [ assistText, setAssistText ] = useState('');
   const [ isLogged, setIsLogged ] = useState('');
   const [ isVerified, setIsVerified] = useState('')
 
-  const [productList, setProductList] = useState([]);//useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
-  
-  const [purchasesList, setPurchasesList] = useState([]);//useState([{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'},{name: 'product name'}, {name: 'product name'}, {name: 'product name'}, {name: 'product name'}, ]);
-
-  const [cartList, setCartList] = useState([]);//useState([{}, {}, {}, {}, {}, {}]);
-
+  const [productList, setProductList] = useState([]);
+  const [purchasesList, setPurchasesList] = useState([]);
+  const [cartList, setCartList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
+  const [globalUsername, setGlobalUsername] = useState('');
   
   return (
     <div className='app-body'>
@@ -42,7 +38,7 @@ function App() {
               else {setShowMenu(false)}  
             }}/>
           </div>
-          <Outlet context={{searchText, setSearchText, productList, setProductList, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currrentProduct, setCurrentProduct}}/>
+          <Outlet context={{searchText, setSearchText, productList, setProductList, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currentProduct, setCurrentProduct}}/>
         </div>
     </div>
   )

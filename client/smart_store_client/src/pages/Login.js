@@ -13,29 +13,55 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
+        
+        const Verify = async () => {
+            try{
+                let response = await axios.post('http://localhost:5123/smartfashionstore/login', {username: username, password: password});
+            
+                if(response) {
+                    if(response.data.success) {
+                        setGlobalUsername(username);
+                        setIsLogged(true);
+                        setIsVerified(true);
 
-        axios.post('/smartfashionstore/login', {username, password}).then(response => {
-            if(response.data.success || true) {
-                setIsLogged(true);
-                setIsVerified(true);
-                setGlobalUsername(username);
-                navigate('/shop');
-            } else {
-                setErrorMessage('Invalid username or password.');
+
+                        async function fetchUserCart() {
+                            try{
+                                const response = await axios.get(`http://localhost:5123/smartfashionstore/cart/user/${username}`);
+                                const responseData = response.data;
+
+                                if(responseData.success) {
+                                    const cart = responseData.cart;
+                                    console.log(cart);  
+                                } 
+                                else {
+                                    console.error('Something went wrong. Cart is not loading.');
+                                }
+                            } catch (error) {
+                                console.error('Error fetching data:', error);
+                            }
+                        }
+
+                        fetchUserCart();
+                        navigate('/shop');
+                        console.log("Navigated to shop");
+                    } else {
+                        setErrorMessage('Invalid username or password.');
+                        console.log("Navigated to shop");
+                    }
+                }
+            } catch(error) {
+                console.error('Error during login: ', error);
+                setErrorMessage('An error occurred during login');
             }
-        })
-        .catch(error => {
-            console.error('Error during login: ', error);
-            setErrorMessage('An error occurred during login');
-        })
-        setIsLogged(true);
-        setIsVerified(true);
-        navigate('/shop');
+        }
+
+        Verify();
     }
 
     return (
         <div className="login">
-            <form onSubmit={(e) => {handleLogin(e)}}>
+            <form onSubmit={(e) => { handleLogin(e); }}>
                 <h1> Sign In </h1>
                 <div className="form-field">
                     <label > username: </label>

@@ -18,32 +18,15 @@ const Cart = () => {
         
         async function fetchUserCart() {
             try{
-                const response = await axios.post('http://localhost:5123/smartfashionstore/cart/user', {globalUsername});
+                const response = await axios.get(`http://localhost:5123/smartfashionstore/cart/user/${globalUsername}`);
                 const responseData = response.data;
 
-                if (responseData.success) {
+                if(responseData.success) {
                     const cart = responseData.cart;
-                    setCartList(JSON.parse(cart));
-                    console.log(JSON.parse(cart));
+                    console.log(cart);  
                 } 
                 else {
-                    try{
-                        const response = await axios.get('http://localhost:5123/smartfashionstore/cart/user', {globalUsername});
-                        const responseData = response.data;
-
-                        if(responseData.success) {
-                            const cart = responseData.cart;
-                            setCartList(JSON.parse(cart));
-                            console.log(JSON.parse(cart));
-                            
-                        } 
-                        else {
-                            console.error('Something went wrong. Cart is not loading.');
-                            navigate('/');
-                        }
-                    } catch (error) {
-                        console.error('Error fetching data:', error);
-                    }
+                    console.error('Something went wrong. Cart is not loading.');
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -57,27 +40,16 @@ const Cart = () => {
 
     const purchaseCart = async () => {
         try {
+            const response = await axios.post(`http://localhost:5123/smartfashionstore/purchases/${globalUsername}/transaction-started`, {userPurchaseList: cartList});
+            const responseData = response.data;
 
-            let purchaseItemsList = cartList.map((item)=> {
-                return {
-                    productId: item.productID,
-                    productQty: item.qty,
-                }
-            }) 
-
-            let response = await axios.post('http://localhost:5123/smartfashionstore/purchases/push', {globalUsername, purchaseItemsList});
-            if(response) {
-                if(response.data.success) {
-                    let response2 = await axios.delete('http://localhost:5123/smartfashionstore/cart/user', {globalUsername});
-                    if(response2) {
-                        if(response2.data.success) {
-                            setCartList([]);
-                        } else {
-                            console.error('Purchase Failed.')
-                        }
-                    }
-                }
+            if(responseData.success) {
+                console.log("Purchase success!");
+                setCartList([]);  
             } 
+            else {
+                console.error('Something went wrong. Cart is not loading.');
+            }
         } catch(error){
             console.log(error);
         }
