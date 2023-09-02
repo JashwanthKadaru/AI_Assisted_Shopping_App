@@ -9,19 +9,7 @@ const Product = () => {
     const [buymessage, setBuyMessage] = useState('');
     const [currentProduct, setCurrentProduct] = useState({});
     
-    console.log("cartList:",cartList);
-    // setting number state to appropriate value
-    let Qty=0;
-    for(let item of cartList){
-        if(item.ID===productList.productID){
-            Qty = item.cartQty;
-        }
-    }
-
-    // console logging to check;
-    console.log("Qty:",Qty);
-
-    const [number,setNumber] = useState(Qty);
+    const [number,setNumber] = useState(0);
     const location = useLocation();
     const navigate = useNavigate();
     
@@ -32,6 +20,20 @@ const Product = () => {
 
         setCurrentProduct(location.state.item);
         console.log("location.state.item value print:",location.state.item);
+        
+        //console.log("cartList:",cartList);
+        // setting number state to appropriate value
+        let Qty=0;
+        for(let item of cartList){
+            if(item.productID===location.state.item.productID){
+                Qty = item.cartQty;
+            }
+        }
+
+        setNumber(Qty);
+        // console logging to check;
+        console.log("Qty:",Qty);
+
     }, []);
 
     const addProductToCart = async () => {
