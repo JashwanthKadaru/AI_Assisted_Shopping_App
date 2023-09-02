@@ -1,6 +1,6 @@
 import { NavLink, useNavigate, useOutletContext } from 'react-router-dom';
 import '../css/Drawer.css'
-const Drawer = ({ isLogged ,setIsLogged, isVerfied, setIsVerified }) => {
+const Drawer = ({ isLogged ,setIsLogged, isVerfied, setIsVerified, profilePicturePath, globalUsername }) => {
     const navigate = useNavigate();
 
     const handleLogout = (event) => {
@@ -11,6 +11,7 @@ const Drawer = ({ isLogged ,setIsLogged, isVerfied, setIsVerified }) => {
        navigate('/login');
     }
 
+    // console.log(`Path1: http://localhost:5123/static/${profilePicturePath}`);
     return (
         <div className="app-drawer">
             <div className='navbar'>
@@ -29,9 +30,14 @@ const Drawer = ({ isLogged ,setIsLogged, isVerfied, setIsVerified }) => {
                 </div>
 
                 <div className='user-div'>
-                    <div className='profile-pic'> <img src='/myimage.jpg'/> </div>
+                    <div className='profile-pic'> 
+                        {   
+                            profilePicturePath &&
+                            <img src={`http://localhost:5123/static/${profilePicturePath}`}/>
+                        }    
+                    </div>
                     <div className='user-details'>
-                        <h4> Kadaru Jashwanth Reddy</h4>
+                        <h4> {globalUsername} </h4>
                         <h6> #0001102FA137 </h6>
                     </div>
                 </div>

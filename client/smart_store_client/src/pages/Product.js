@@ -80,7 +80,7 @@ const Product = () => {
         <div className="product">
             <div className="product-div">
                 <div className="product-img">
-                    <img src="/shoe1.jpg"/>
+                    <img src={`http://localhost:5123/static/${currentProduct.productPicture}`}/>
                 </div>
 
                 <div className="product-body">

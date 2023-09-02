@@ -19,7 +19,7 @@ const ProductCard = ({item, key}) => {
         <div className="product-card" onClick={(e) => {navigateToProduct(e);}}>
            <div className="product-card-head"> 
                 <div className="product-image">
-                    <img src='./shoe1.jpg'/>
+                    <img src={`http://localhost:5123/static/${item.productPicture}`}/>
                 </div>
             </div>
 

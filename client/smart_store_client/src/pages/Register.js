@@ -8,32 +8,51 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [picture, setPicture] = useState('');
+    const [picture, setPicture] = useState();
     const [isRegister, setIsRegister] = useState('');
     const [newRegister, setNewRegister] = useState('');
 
     const onSubmit = () => {
-        setIsRegister('');
-        setNewRegister('');
+    
+        const onsubmitHelper = async () => {
+            try{
+                setIsRegister('');
+                setNewRegister('');
 
-        axios.post('http://localhost:5123/smartfashionstore/register/', {username:username, email:email, password:password, picture:picture, fullname:fullName})
-        .then(response => {
-            if(response.data.success){
-                setNewRegister('true')
-            }else if(response.data.alreadyExists) {
-                setIsRegister('true');
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data' + error);
-        });
+                const formData = new FormData();
+                formData.append('username', username);
+                formData.append('email', email);
+                formData.append('password', password);
+                formData.append('fullname', fullName);
+                formData.append('picture', picture);
 
-        setFullName(''); setUsername(''); setEmail(''); setPassword(''); setPicture('');
+                let response = await axios.post('http://localhost:5123/smartfashionstore/register/', formData);
+                
+                if(response) {
+                    if(response.data.success){
+                        setNewRegister('true')
+                    }else if(response.data.alreadyExists) {
+                        setIsRegister('true');
+                    }
+
+                    console.log("Response:",response);
+                } else {
+                    console.log("Response:",response);
+                }
+            } catch(error) {
+                console.error('Error fetching data' + error);
+            };
+
+            setFullName(''); setUsername(''); setEmail(''); setPassword(''); setPicture('');
+        }
+
+        // call to async function.
+        onsubmitHelper();
     }
-
+    
     return (
         <div className="register">
-            <form >
+            <form encType="multipart/form-data">
                 <h1> Register </h1>
 
                 <div className="register-form-field">
@@ -57,7 +76,7 @@ const Register = () => {
                 </div>
 
                 <div className="register-form-field">
-                    <input type="file" max={1} value={picture} onChange={(e) => {setPicture(e.target.value); console.log(e.target.value)}}/>
+                    <input type="file" max={1} accept='image/*' onChange={(e) => {setPicture(e.target.files[0]); console.log(e.target.value)}}/>
                 </div>
 
                 <button type="submit" onClick={(e) => {onSubmit();}}> Submit </button>

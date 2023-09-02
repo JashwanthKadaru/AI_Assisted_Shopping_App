@@ -18,13 +18,14 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
   const [globalUsername, setGlobalUsername] = useState('');
-  
+  const [picture, setPicture] = useState();
+  const [profilePicturePath, setProfilePicturePath] = useState('');
   return (
     <div className='app-body'>
 
         {/* side drawer for menu and credits and app name     */}
         <div className={ (!showMenu)?'app-drawer-box-over overlay hide':'app-drawer-box-over overlay'}>
-          <Drawer isLogged={isLogged} setIsLogged={setIsLogged} isVerfied={isVerified} setIsVerified={setIsVerified} showMenu={showMenu} setShowMenu={setShowMenu}/>
+          <Drawer isLogged={isLogged} setIsLogged={setIsLogged} isVerfied={isVerified} setIsVerified={setIsVerified} showMenu={showMenu} setShowMenu={setShowMenu} profilePicturePath={profilePicturePath} globalUsername={globalUsername}/>
         </div>
 
         <div className='app-drawer-box-under'>
@@ -38,7 +39,7 @@ function App() {
               else {setShowMenu(false)}  
             }}/>
           </div>
-          <Outlet context={{searchText, setSearchText, productList, setProductList, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currentProduct, setCurrentProduct}}/>
+          <Outlet context={{searchText, setSearchText, productList, setProductList, purchasesList, setPurchasesList, cartList, setCartList, isLogged, setIsLogged, isVerified, setIsVerified, assistText, setAssistText, globalUsername, setGlobalUsername, currentProduct, setCurrentProduct, profilePicturePath, setProfilePicturePath}}/>
         </div>
     </div>
   )

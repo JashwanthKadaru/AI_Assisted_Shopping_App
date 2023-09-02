@@ -4,7 +4,7 @@ import { NavLink, Navigate, useNavigate, useOutletContext } from "react-router-d
 import axios from 'axios';
 
 const Login = () => {
-    const { isLogged ,setIsLogged, isVerfied, setIsVerified, setGlobalUsername } = useOutletContext();
+    const { isLogged ,setIsLogged, isVerfied, setIsVerified, setGlobalUsername, profilePicturePath, setProfilePicturePath } = useOutletContext();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -21,10 +21,10 @@ const Login = () => {
                 if(response) {
                     if(response.data.success) {
                         setGlobalUsername(username);
+                        console.log("setProfilePicturePath:", setProfilePicturePath);
+                        setProfilePicturePath(response.data.profilePicturePath);
                         setIsLogged(true);
                         setIsVerified(true);
-
-
                         async function fetchUserCart() {
                             try{
                                 const response = await axios.get(`http://localhost:5123/smartfashionstore/cart/user/${username}`);
@@ -36,9 +36,11 @@ const Login = () => {
                                 } 
                                 else {
                                     console.error('Something went wrong. Cart is not loading.');
+                                    throw Error(`Something went wrong. Cart is not loading.`);
                                 }
                             } catch (error) {
                                 console.error('Error fetching data:', error);
+                                throw Error(`Error fetching data:${error}`);
                             }
                         }
 

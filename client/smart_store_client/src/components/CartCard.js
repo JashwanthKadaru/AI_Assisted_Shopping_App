@@ -80,13 +80,13 @@ const CartCard = ({item, cartList, setCartList, isLogged, globalUsername, produc
         <div className='cart-card'>
             <div className="cart-card-head"> 
                 <div className="cart-image">
-                    <img src='./shoe1.jpg'/>
+                    <img src={`http://localhost:5123/static/${item.productPicture}`}/>
                 </div>
             </div>
 
             <div className="cart-card-body">
-                <h6> {item.name} </h6>
-                <p className="cart-price-info"> Price : {item.price + ' $'}</p>
+                <h6> {item.productName} </h6>
+                <p className="cart-price-info"> Price : {item.productPrice + ' $'}</p>
                 
                 <div className='cart-actions'>
                     <div className='cart-qty-bar'> 
